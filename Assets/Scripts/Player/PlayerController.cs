@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb = default;
     private Vector3 _moveDir = default;
+    private float _hol = 0f;
+    private float _ver = 0f;
 
     private void Start()
     {
@@ -14,11 +16,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        float hol = Input.GetAxisRaw("Horizontal");
-        float ver = Input.GetAxisRaw("Vertical");
+        _hol = Input.GetAxisRaw("Horizontal");
+        _ver = Input.GetAxisRaw("Vertical");
 
-        _moveDir = Vector3.forward * ver + Vector3.right * hol;
-        _moveDir = Camera.main.transform.TransformDirection(_moveDir);
+        _moveDir = Vector3.forward * _ver + Vector3.right * _hol;
+        //_moveDir = Camera.main.transform.TransformDirection(_moveDir);
         _moveDir.y = 0f;
 
         Vector3 forward = _rb.velocity;
